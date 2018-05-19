@@ -1,0 +1,40 @@
+import { Pelicula } from './../shared/pelicula';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+//import { HttpClient } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import "rxjs/Rx";
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/map';
+
+const httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
+
+@Injectable()
+export class PeliculasService {
+  private baseUrl = 'http://localhost:8080/PeliculasySeries/server/pelisseries';
+
+  constructor(private http: HttpClient) { }
+
+
+
+/*getPeliculas(){
+  console.log(this.http.get(this.baseUrl));
+}*/
+
+getPeliculas(){//: Observable<Pelicula[]> {
+    //console.log("Entra en la carga de la lista de peliculas " + this.baseUrl);
+    this.http.get(this.baseUrl,httpOptions).map(response => {
+      let jsonObject = response.data;
+      let pelicula = new Pelicula(
+                        jsonObject.id, jsonObject.clave, jsonObject.titulo,
+                        jsonObject.formato, jsonObject.tipo,jsonObject.productora,
+                        jsonObject.temporada,jsonObject.sipnosis,jsonObject.estado,
+                        jsonObject.genero,jsonObject.claveTipo,jsonObject.claveEstado );
+    });
+
+  }
+}
+//Campeones (Captain Tsubasa) 1
