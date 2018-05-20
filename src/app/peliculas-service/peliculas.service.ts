@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
 import {ReactiveFormsModule, FormControl, FormsModule} from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
-import "rxjs/Rx";
+import 'rxjs/Rx';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -15,14 +15,14 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PeliculasService {
 
-  constructor(private http: HttpClient){ }
-  
-  getPeliculas(url: string){
+  constructor(private http: HttpClient) { }
+
+  getPeliculas(url: string) {
       return this.http.get<Pelicula[]>(url);
   }
 
-  getPelicula(url){      
+  getPelicula(url) {
       return this.http.get<Pelicula[]>(url);
   }
 }
-//Campeones (Captain Tsubasa) 1
+// Campeones (Captain Tsubasa)
