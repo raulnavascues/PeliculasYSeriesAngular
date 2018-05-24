@@ -31,5 +31,5 @@ export class Pelicula{
         this.claveTipo = _claveTipo; 
         this.claveEstado = _claveEstado;
     }
-  
+
 }

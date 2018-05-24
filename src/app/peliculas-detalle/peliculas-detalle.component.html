@@ -14,20 +14,22 @@
   <span>{{pel.Temporada}}</span>
 </div>
 </div>
-<!--<div *ngIf= "">-->
-  <table class="table table-hover table-bordered">
-    <thead>
-      <th>Numero</th>
-      <th>Temporada</th>
-      <th>Episodio</th>
-    </thead>
-    <tbody>
-        <tr *ngFor="let cap of episodios">
-          <td>{{cap.NumEpisodio}}</td>
-          <td>{{cap.Temporada}}</td>
-          <td>{{cap.Episodio}}</td>
-        </tr>
-    </tbody>
-  </table>
-<!--</div>-->
-</div>
+  <!-- Carga de las temporadas-->
+  <div *ngFor= "let tempo of temporadas">
+    {{tempo.nomTemporada}}
+    <div>
+      <table class="table table-hover table-bordered">
+          <thead>
+              <th>Numero</th>
+              <th>Episodio</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cap of tempo.episodios">
+                  <td>{{cap.NumEpisodio}}</td>
+                  <td>{{cap.Episodio}}</td>
+                </tr>
+            </tbody>
+      </table>
+    </div> 
+  </div>
+</div> <!-- <div class="container"> -->
