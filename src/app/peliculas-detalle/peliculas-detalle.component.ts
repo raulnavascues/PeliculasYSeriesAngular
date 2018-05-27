@@ -1,3 +1,4 @@
+import { Pelicula } from './../shared/pelicula';
 import { Temporada } from './../shared/temporada';
 import { Episodio } from './../shared/episodio';
 import { EpisodiosService } from './../episodios-service/episodios.service';
@@ -7,6 +8,7 @@ import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { PeliculasService } from './../peliculas-service/peliculas.service';
 import { Pelicula } from '../shared/pelicula';
+import { AccordionModule } from 'ngx-accordion';
 
 @Component({
   selector: 'app-peliculas-detalle',
@@ -26,10 +28,10 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
   constructor(private peliculasService: PeliculasService, private episodiosService: EpisodiosService) { }
 
   ngOnInit() {
-    this.peliculasService.getPelicula(this.urlPelicula + '487').subscribe(
+    this.peliculasService.getPelicula(this.urlPelicula + '546').subscribe(
       _pelicula => {
         this.pelicula = _pelicula,
-        this.getListaEpisodios2('TBBT', 'ser');
+        this.getListaEpisodios2(); // 'ARR', 'ser');
       }
     );
   }
@@ -43,10 +45,20 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
     }
   }
 
-  getListaEpisodios2(clave: string, tipo: string) {
-    if (tipo === 'ser') {
-      this.episodiosService.getTemporadas(this.urlEpisodios2 + clave).subscribe(_temporadas => this.temporadas = _temporadas);
+  getListaEpisodios2() { // clave: string, tipo: string) {
+    const pelis: Pelicula[] = this.pelicula;
+    let peli: Pelicula;
+
+    peli = pelis[0];
+    // console.log(peli[0].claveTipo);
+
+    if (peli.claveTipo === 'SER' ) {
+      this.episodiosService.getTemporadas(this.urlEpisodios2 + peli.Clave).subscribe(_temporadas => this.temporadas = _temporadas);
     }
+
+    /* if (tipo === 'ser') {
+      this.episodiosService.getTemporadas(this.urlEpisodios2 + clave).subscribe(_temporadas => this.temporadas = _temporadas);
+    } */
   }
 
 
