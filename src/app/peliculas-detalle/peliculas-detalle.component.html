@@ -1,10 +1,11 @@
-<h1>Detalle Serie</h1>
+<div class="container" *ngFor="let pel of pelicula">
+<h1>Detalle {{pel.Tipo}}: {{pel.Nombre}}</h1>
 
-<div class="container">
+
   <div class="row">
-<div  class="col-12"  *ngFor="let pel of pelicula">
+<div  class="col-12">
   <div class="col-4">
-    <span>Nombre {{pel.Tipo}}: </span>  
+    <!--<span>Nombre {{pelicula.Tipo}}: </span>  -->
     <span>{{pel.Nombre}}</span>
   </div>
   <div class="col-8">
@@ -16,7 +17,7 @@
 </div>
   <!-- Carga de las temporadas-->
   <div *ngFor= "let tempo of temporadas">
-    {{tempo.nomTemporada}}
+      <h4>{{tempo.nomTemporada}}</h4>      
     <div>
       <table class="table table-hover table-bordered">
           <thead>
@@ -30,6 +31,6 @@
                 </tr>
             </tbody>
       </table>
-    </div> 
+    </div>
   </div>
 </div> <!-- <div class="container"> -->

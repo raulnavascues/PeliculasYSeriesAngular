@@ -1,3 +1,4 @@
+import { Ng2Accordion } from 'ng2-native-accordion';
 import { EpisodiosService } from './episodios-service/episodios.service';
 import { HttpModule } from '@angular/http';
 import { PeliculasService } from './peliculas-service/peliculas.service';
@@ -10,16 +11,16 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
 import { jquery } from 'jquery';
 import { bootstrap } from 'bootstrap';
 import { DataTable } from 'angular-2-data-table';
-//import {  } from 'ng-table-excel-export';
 import { FooterComponent } from './footer/footer.component';
 import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    //PeliculasComponent,
+    // PeliculasComponent,
     FooterComponent,
-    PeliculasDetalleComponent,
+    PeliculasDetalleComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +29,7 @@ import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    Ng2Accordion,
     /*,
     DataTable,
     jquery,
@@ -37,7 +39,7 @@ import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle
     PeliculasService,
     EpisodiosService
   ],
-  //bootstrap: [PeliculasComponent, FooterComponent]
-  bootstrap:[PeliculasDetalleComponent, FooterComponent]
+  // bootstrap: [PeliculasComponent, FooterComponent]
+  bootstrap: [PeliculasDetalleComponent, FooterComponent]
 })
 export class AppModule { }
