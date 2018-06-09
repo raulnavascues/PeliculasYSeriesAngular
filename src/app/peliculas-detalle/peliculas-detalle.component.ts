@@ -29,7 +29,7 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // let peliculaTemp: Pelicula[] = [];
 
-    this.peliculasService.getPelicula(this.urlPelicula + '487').subscribe(
+    this.peliculasService.getPelicula(this.urlPelicula + '45').subscribe(
       _pelicula => {
         this.pelicula = _pelicula,
         this.getListaEpisodios2(_pelicula);
