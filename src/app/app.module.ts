@@ -13,17 +13,19 @@ import { bootstrap } from 'bootstrap';
 import { DataTable } from 'angular-2-data-table';
 import { FooterComponent } from './footer/footer.component';
 import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle.component';
-
+import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
+import { MenuComponent } from './menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    // PeliculasComponent,
+    PeliculasComponent,
     FooterComponent,
-    PeliculasDetalleComponent
+    PeliculasDetalleComponent,
+    EditEpisodeComponent,
+    MenuComponent
   ],
   imports: [
-    BrowserModule,
     ReactiveFormsModule,
     HttpModule,
     BrowserModule,
@@ -39,7 +41,7 @@ import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle
     PeliculasService,
     EpisodiosService
   ],
-  // bootstrap: [PeliculasComponent, FooterComponent]
-  bootstrap: [PeliculasDetalleComponent, FooterComponent]
+  // bootstrap: [MenuComponent, PeliculasComponent, FooterComponent]
+  bootstrap: [MenuComponent, EditEpisodeComponent, FooterComponent]
 })
 export class AppModule { }

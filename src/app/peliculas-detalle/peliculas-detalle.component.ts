@@ -29,7 +29,7 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // let peliculaTemp: Pelicula[] = [];
 
-    this.peliculasService.getPelicula(this.urlPelicula + '45').subscribe(
+    this.peliculasService.getPelicula(this.urlPelicula + '547').subscribe(
       _pelicula => {
         this.pelicula = _pelicula,
         this.getListaEpisodios2(_pelicula);
@@ -42,13 +42,13 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
   }
 
   getListaEpisodios(clave: string, tipo: string) {
-    if (tipo === 'ser') {
+    if (tipo === 'SER' || tipo === 'SMA' || tipo === 'SDI') {
       this.episodiosService.getEpisodios(this.urlEpisodios + clave).subscribe(_episodios => this.episodios = _episodios);
     }
   }
 
   getListaEpisodios2(peliT: Pelicula[]) {
-    if (peliT[0].claveTipo === 'SER' ) {
+    if (peliT[0].claveTipo === 'SER' || peliT[0].claveTipo === 'SMA' || peliT[0].claveTipo === 'SDI' ) {
       this.episodiosService.getTemporadas(this.urlEpisodios2 + peliT[0].Clave).subscribe(_temporadas => this.temporadas = _temporadas);
     }
   }
