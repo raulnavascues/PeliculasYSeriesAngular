@@ -9,8 +9,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
-import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
-import { errorHandler } from '@angular/platform-browser';
+// import { CATCH_ERROR_VAR } from '@angular/compiler/src/output/output_ast';
+// import { errorHandler } from '@angular/platform-browser';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -40,6 +40,6 @@ export class EpisodiosService {
               // console.error(json)
             );*/
     console.log(url + json);
-    return this.http.post<Episodio>(url, json, httpOptions).catch(errorHandler);
+    return this.http.post<Episodio>(url, 'json:' + json, httpOptions); // .catch(errorHandler);
   }
 }
