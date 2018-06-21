@@ -27,8 +27,8 @@ import { MenuComponent } from './menu/menu.component';
   ],
   imports: [
     ReactiveFormsModule,
-    HttpModule,
     BrowserModule,
+    HttpModule,
     FormsModule,
     HttpClientModule,
     Ng2Accordion,

@@ -1,8 +1,7 @@
-import { Temporada } from './../shared/temporada';
-import { Episodio } from './../shared/episodio';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { EpisodiosService } from './../episodios-service/episodios.service';
+import { Mensaje } from '../shared/Mensaje';
 
 @Component({
   selector: 'app-edit-episode',
@@ -10,7 +9,7 @@ import { EpisodiosService } from './../episodios-service/episodios.service';
   styleUrls: ['./edit-episode.component.css']
 })
 export class EditEpisodeComponent implements OnInit {
-  episodios = new FormGroup ({
+  formepisodio = new FormGroup ({
     pelicula: new FormControl('ARR'),
     episodio: new FormControl(),
     temporada: new FormControl(),
@@ -19,7 +18,7 @@ export class EditEpisodeComponent implements OnInit {
 
   private urlEpisodios = 'http://localhost:4284/episodios/addEpisodio';
   private urlEpisodios2 = 'http://localhost:4284/episodios/ObtenerEpisodios2?clave=';
-
+  private mensaje: Mensaje[];
 
   constructor(private episodioService: EpisodiosService) { }
 
@@ -31,6 +30,8 @@ export class EditEpisodeComponent implements OnInit {
  * Llamada al web service con el boton "ENVIAR"
  */
   onClick() {
-    console.log( this.episodioService.editEpisodio(this.urlEpisodios, JSON.stringify(this.episodios.value)) );
+    this.episodioService.editEpisodio(this.urlEpisodios, this.formepisodio.value ).subscribe(_mensaje => this.mensaje = _mensaje)  ;
+    // .subscribe(_mensaje => this.mensaje = _mensaje).catch();
+    console.log(this.mensaje);
   }
 }

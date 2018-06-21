@@ -1,6 +1,6 @@
 <div class="container">
-  <h2>Insertar un episodio</h2>
-  <form [formGroup]="episodios">
+  <h1>Insertar un episodio</h1>
+  <form [formGroup]="formepisodio">
     <div class="form-group">
       <label class="center-block">Pelicula:
         <input class="form-control" formControlName="pelicula" readonly="readonly" />
@@ -18,5 +18,5 @@
     <button (click)="onClick()">Aceptar</button>
   </form>
 
-  <h2>Form value: {{ episodios.value | json }}</h2>
+  <h2>Form value: {{ formepisodio.value | json }}</h2>
 </div>
