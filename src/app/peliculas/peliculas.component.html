@@ -5,7 +5,7 @@
       <form>
         <div class="form-group">
           <label>Buscar</label>
-          <input type="text" (keypress)="pruebas($event)" id="search" class="form-control" />
+          <input type="text" (keypress)="buscar($event)" id="search" class="form-control" />
         <!--<button class="btn">Buscar</button>-->
         </div>
       </form>
@@ -13,21 +13,17 @@
     <div>
       <table class="table table-hover table-bordered" id="peliculas">
           <thead>
-            <!--<th>JSON</th>-->
             <th>Clave</th>
-            <!--<th>Clave</th>-->
             <th>Titulo</th>
             <th>Productora</th>
             <th>Tipo</th>
             <th>Formato</th>
             <th>Temporada</th>
           </thead>
-          <tbody class="pagination">
+          <tbody>
             <tr *ngFor="let pelicula of peliculas">
-              <!--<td><pre>{{pelicula.toString()}}</pre></td>-->
               <td>{{pelicula.Clave}}</td>
-              <!--<td>{{pelicula.clave}}</td>-->
-              <td><a href="detallepelicula.html?id={{pelicula.Id}}">{{pelicula.Nombre}}</a></td>
+              <td><a routerLink="/detalle-pelicula" href="/">{{pelicula.Nombre}}</a></td>
               <td>{{pelicula.Productora}}</td>
               <td>{{pelicula.Tipo}}</td>
               <td>{{pelicula.Formato}}</td>

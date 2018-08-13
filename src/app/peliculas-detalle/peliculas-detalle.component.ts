@@ -3,16 +3,13 @@ import { Temporada } from './../shared/temporada';
 import { Episodio } from './../shared/episodio';
 import { EpisodiosService } from './../episodios-service/episodios.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { TestBed } from '@angular/core/testing';
-import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
 import { PeliculasService } from './../peliculas-service/peliculas.service';
-import { AccordionModule } from 'ngx-accordion';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-peliculas-detalle',
   templateUrl: './peliculas-detalle.component.html',
-  styleUrls: ['./peliculas-detalle.component.css']
+  styleUrls: ['./peliculas-detalle.component.css'],
 })
 export class PeliculasDetalleComponent implements OnInit, OnDestroy {
 
@@ -24,12 +21,13 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
   private temporadas: Temporada[] = [];
   private numTemporadas: number;
 
-  constructor(private peliculasService: PeliculasService, private episodiosService: EpisodiosService) { }
+  constructor(private peliculasService: PeliculasService,
+              private episodiosService: EpisodiosService) { }
 
   ngOnInit() {
     // let peliculaTemp: Pelicula[] = [];
 
-    this.peliculasService.getPelicula(this.urlPelicula + '547').subscribe(
+    this.peliculasService.getPelicula(this.urlPelicula + '487').subscribe(
       _pelicula => {
         this.pelicula = _pelicula,
         this.getListaEpisodios2(_pelicula);

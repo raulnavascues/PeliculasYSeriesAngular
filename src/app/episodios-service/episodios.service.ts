@@ -3,7 +3,7 @@ import { Pelicula } from './../shared/pelicula';
 import { Temporada } from './../shared/temporada';
 import { Episodio } from './../shared/episodio';
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpClientModule } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type':  'application/json',
-    // 'enctype': 'multipart/form-data'
+    'enctype': 'multipart/form-data'
   })
 };
 

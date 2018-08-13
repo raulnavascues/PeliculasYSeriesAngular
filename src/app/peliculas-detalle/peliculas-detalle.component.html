@@ -33,7 +33,8 @@
       <div *ngFor= "let tempo of temporadas">
         <div class="card-header">
           <button class="btn btn-link" data-toggle="collapse" attr.data-target="#{{tempo.codTemporada}}">{{tempo.nomTemporada}}</button>
-          <a href="anadir-capitulo.html?clavPel={{pel.Clave}}&temporada={{tempo.numTemporada}}" class="btn btn-success btn-sm">Añadir Capitulo</a> 
+          <!-- <a href="anadir-capitulo.html?clavPel={{pel.Clave}}&temporada={{tempo.numTemporada}}" class="btn btn-success btn-sm">Añadir Capitulo</a> -->
+          <a routerLink="/" class="btn btn-success btn-sm">Añadir Capitulo</a>
         </div><!-- <div class="card-header"> -->
 
         <div id="{{tempo.codTemporada}}" class="collapse" data-parent="#accordion">
@@ -42,14 +43,16 @@
                     <thead>
                         <th>Numero</th>
                         <th>Episodio</th>
+                        <th>Formato</th>
                         <th colspan="2"></th>
                       </thead>
                       <tbody>
                           <tr *ngFor="let cap of tempo.episodios">
                             <td>{{cap.NumEpisodio}}</td>
                             <td>{{cap.Episodio}}</td>
-                            <td><a class="btn btn-sm btn-info" href="editar-capitulo.html?id={{pel.id}}">Editar</a></td>
-                            <td><a class="btn btn-sm btn-danger" href="editar-capitulo.html?id={{pel.id}}">Eliminar</a></td>
+                            <td>{{cap.Formato}}</td>
+                            <td><a class="btn btn-sm btn-info" href="editar-capitulo.html?id={{cap.id}}">Editar</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="editar-capitulo.html?id={{cap.id}}">Eliminar</a></td>
                           </tr>
                       </tbody>
                 </table>
@@ -59,5 +62,5 @@
     </div> <!-- <div class="card"> -->
   </div><!-- <div id="accordion"> -->
 </div><!-- <div *ngIf="pel.claveTipo!='PEL'"> -->
-
+  
 </div> <!-- <div class="container"> -->

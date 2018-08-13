@@ -1,9 +1,19 @@
+<div *ngFor="let serie of listadoSeries">{{serie.Nombre}}</div>
 <div class="container">
-  <h1>Insertar un episodio</h1>
+  <span class="h2">Insertar un episodio</span>
   <form [formGroup]="formepisodio">
     <div class="form-group">
-      <label class="center-block">Pelicula:
-        <input class="form-control" formControlName="pelicula" readonly="readonly" />
+      <label class="center-block" >Pelicula:
+        <label>{{formepisodio.pelicula}}</label>
+        <input class="form-control" formControlName="pelicula" readonly="readonly" type="text" />
+        
+        <select class="form-control" formControlName="listaSeries">
+          <option selected="selected" value="">Seleccione una opción</option>
+          <option *ngFor="let serie of listadoSeries" [ngValue]="serie.clave">{{serie.Nombre}}</option>
+          <option>A</option>
+          <option>B</option>
+        </select>
+
       </label>
       <label class="center-block">Nombre Episodio:
         <input class="form-control" formControlName="episodio">
@@ -15,8 +25,8 @@
           <input type="number" class="form-control" formControlName="numEpisodio">
       </label>
     </div>
-    <button (click)="onClick()">Aceptar</button>
+    <button (click)="onClick()" class="btn btn-success">Aceptar</button>
   </form>
 
-  <h2>Form value: {{ formepisodio.value | json }}</h2>
+  <h2>{{mensaje}}</h2>
 </div>

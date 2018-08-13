@@ -1,3 +1,4 @@
+import { Routes, RouterModule } from '@angular/router';
 import { Ng2Accordion } from 'ng2-native-accordion';
 import { EpisodiosService } from './episodios-service/episodios.service';
 import { HttpModule } from '@angular/http';
@@ -8,13 +9,25 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
-import { jquery } from 'jquery';
-import { bootstrap } from 'bootstrap';
-import { DataTable } from 'angular-2-data-table';
 import { FooterComponent } from './footer/footer.component';
 import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle.component';
 import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
 import { MenuComponent } from './menu/menu.component';
+
+const rutas: Routes = [
+  // {path: '', redirectTo: 'home', pathMatch: 'full'},
+  {
+    path: '',
+    component: PeliculasComponent,
+    children: [
+      {
+        path: 'detalle-pelicula',
+        component: PeliculasDetalleComponent,
+      },
+    ]
+  },
+  {path: 'anadir-episodio', component: EditEpisodeComponent}
+];
 
 @NgModule({
   declarations: [
@@ -23,25 +36,26 @@ import { MenuComponent } from './menu/menu.component';
     FooterComponent,
     PeliculasDetalleComponent,
     EditEpisodeComponent,
-    MenuComponent
+    MenuComponent,
+    /*Router,
+    ActivatedRoute,*/
   ],
   imports: [
-    ReactiveFormsModule,
     BrowserModule,
-    HttpModule,
+    ReactiveFormsModule,
     FormsModule,
+    HttpModule,
     HttpClientModule,
     Ng2Accordion,
-    /*,
-    DataTable,
-    jquery,
-    bootstrap*/
+    RouterModule.forRoot (rutas, { enableTracing: false }),
   ],
   providers: [
     PeliculasService,
     EpisodiosService
   ],
-  // bootstrap: [MenuComponent, PeliculasComponent, FooterComponent]
-  bootstrap: [MenuComponent, EditEpisodeComponent, FooterComponent]
+  // bootstrap: [ PeliculasComponent]
+  bootstrap: [MenuComponent, PeliculasDetalleComponent, FooterComponent]
 })
+// platformBrowserDynamic().bootstrapModule(AppModule);
+
 export class AppModule { }
