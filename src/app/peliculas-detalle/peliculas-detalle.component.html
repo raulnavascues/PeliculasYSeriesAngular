@@ -27,16 +27,18 @@
   </div>
 </div>
 </div>
+
 <div *ngIf="pel.claveTipo!='PEL' && pel.claveTipo!='DIB' && pel.claveTipo!='PMA' ">
   <div id="accordion">
     <div class="card">
       <div *ngFor= "let tempo of temporadas">
+        Temporada: {{tempo.nomTemporada}}
         <div class="card-header">
           <button class="btn btn-link" data-toggle="collapse" attr.data-target="#{{tempo.codTemporada}}">{{tempo.nomTemporada}}</button>
           <!-- <a href="anadir-capitulo.html?clavPel={{pel.Clave}}&temporada={{tempo.numTemporada}}" class="btn btn-success btn-sm">Añadir Capitulo</a> -->
           <a routerLink="/" class="btn btn-success btn-sm">Añadir Capitulo</a>
         </div><!-- <div class="card-header"> -->
-
+        
         <div id="{{tempo.codTemporada}}" class="collapse" data-parent="#accordion">
           <div class="card-body">
               <table class="table table-hover table-bordered">

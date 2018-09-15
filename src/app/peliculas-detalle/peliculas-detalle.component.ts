@@ -47,6 +47,8 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
 
   getListaEpisodios2(peliT: Pelicula[]) {
     if (peliT[0].claveTipo === 'SER' || peliT[0].claveTipo === 'SMA' || peliT[0].claveTipo === 'SDI' ) {
+      // this.episodiosService.getTemporadas(this.urlEpisodios2 + peliT[0].Clave).subscribe(_temporadas => this.temporadas = _temporadas);
+      // this.episodiosService.getTemporadas(this.urlEpisodios2 + peliT[0].Clave).subscribe(_temporadas => alert(_temporadas));
       this.episodiosService.getTemporadas(this.urlEpisodios2 + peliT[0].Clave).subscribe(_temporadas => this.temporadas = _temporadas);
     }
   }
