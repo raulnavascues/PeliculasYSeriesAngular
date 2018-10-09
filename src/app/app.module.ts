@@ -13,6 +13,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle.component';
 import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
 import { MenuComponent } from './menu/menu.component';
+import { FormatosService } from './formatos-service/formatos.service';
 
 const rutas: Routes = [
   // {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -51,10 +52,11 @@ const rutas: Routes = [
   ],
   providers: [
     PeliculasService,
-    EpisodiosService
+    EpisodiosService,
+    FormatosService
   ],
   // bootstrap: [ PeliculasComponent]
-  bootstrap: [MenuComponent, PeliculasDetalleComponent, FooterComponent]
+  bootstrap: [MenuComponent, EditEpisodeComponent, FooterComponent]
 })
 // platformBrowserDynamic().bootstrapModule(AppModule);
 

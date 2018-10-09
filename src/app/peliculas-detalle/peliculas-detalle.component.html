@@ -1,8 +1,10 @@
 <div *ngFor="let pel of pelicula" class="container">
 <span class="h1">Detalle {{pel.Tipo}}: {{pel.Nombre}}</span>
+<div>
 <a href="editar-pelicula.html?id={{pel.Id}}" class="btn btn-info">Editar</a>
 <!--<a href="anadir-capitulo.html?clave={{pel.Clave}}">Añadir Capitulo</a>-->
 <a href="eliminar-pelicula.html?id={{pel.Id}}&nombre={{pel.Nombre}}&clave={{pel.Clave}}" class="btn btn-danger">Eliminar Elemento</a>
+</div>
   <div class="row">
 <div  class="col-lg-12">
   <div class="col-lg-12">
@@ -32,14 +34,14 @@
   <div id="accordion">
     <div class="card">
       <div *ngFor= "let tempo of temporadas">
-        Temporada: {{tempo.nomTemporada}}
+        
         <div class="card-header">
-          <button class="btn btn-link" data-toggle="collapse" attr.data-target="#{{tempo.codTemporada}}">{{tempo.nomTemporada}}</button>
+          <button class="btn btn-link" data-toggle="collapse" attr.data-target="#{{tempo.CodTemporada}}">{{tempo.NomTemporada}}</button>
           <!-- <a href="anadir-capitulo.html?clavPel={{pel.Clave}}&temporada={{tempo.numTemporada}}" class="btn btn-success btn-sm">Añadir Capitulo</a> -->
           <a routerLink="/" class="btn btn-success btn-sm">Añadir Capitulo</a>
         </div><!-- <div class="card-header"> -->
         
-        <div id="{{tempo.codTemporada}}" class="collapse" data-parent="#accordion">
+        <div id="{{tempo.CodTemporada}}" class="collapse" data-parent="#accordion">
           <div class="card-body">
               <table class="table table-hover table-bordered">
                     <thead>
@@ -49,12 +51,12 @@
                         <th colspan="2"></th>
                       </thead>
                       <tbody>
-                          <tr *ngFor="let cap of tempo.episodios">
+                          <tr *ngFor="let cap of tempo.Episodios">
                             <td>{{cap.NumEpisodio}}</td>
                             <td>{{cap.Episodio}}</td>
                             <td>{{cap.Formato}}</td>
-                            <td><a class="btn btn-sm btn-info" href="editar-capitulo.html?id={{cap.id}}">Editar</a></td>
-                            <td><a class="btn btn-sm btn-danger" href="editar-capitulo.html?id={{cap.id}}">Eliminar</a></td>
+                            <td><a class="btn btn-sm btn-info" href="editar-capitulo.html?id={{cap.Id}}">Editar</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="editar-capitulo.html?id={{cap.Id}}">Eliminar</a></td>
                           </tr>
                       </tbody>
                 </table>

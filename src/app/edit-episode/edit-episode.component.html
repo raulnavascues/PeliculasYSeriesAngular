@@ -5,11 +5,12 @@
     <div class="form-group">
       <label class="center-block" >Pelicula:
         <label>{{formepisodio.pelicula}}</label>
-        <input class="form-control" formControlName="pelicula" readonly="readonly" type="text" />
+        <input class="form-control" formControlName="pelicula" readonly="readonly" type="hidden" />
         
         <select class="form-control" formControlName="listaSeries">
           <option selected="selected" value="">Seleccione una opción</option>
-          <option *ngFor="let serie of listadoSeries" [ngValue]="serie.clave">{{serie.Nombre}}</option>
+          <option *ngFor="let serie of listadoSeries" value="{{serie.clave}}">{{serie.Nombre}}</option>
+          <option>Series: {{listadoSeries}}</option>
           <option>A</option>
           <option>B</option>
         </select>
@@ -20,10 +21,16 @@
       </label>
       <label class="center-block">Temporada:
           <input type="number" class="form-control" formControlName="temporada">
-        </label>
+      </label>
       <label class="center-block">Numero Episodio:
           <input type="number" class="form-control" formControlName="numEpisodio">
       </label>
+
+      <label class="center-block">Formato Episodio:</label>
+      <select class="form-control" formControlName="formato">
+        <option value="" selected="selected">Seleccione una opción</option>
+        <option *ngFor="let forma of listadoFormatos" value="{{forma.Clave}}">{{forma.Nombre}}</option>
+      </select>
     </div>
     <button (click)="onClick()" class="btn btn-success">Aceptar</button>
   </form>
