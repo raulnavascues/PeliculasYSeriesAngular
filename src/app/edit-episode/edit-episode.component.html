@@ -1,4 +1,3 @@
-<div *ngFor="let serie of listadoSeries">{{serie.Nombre}}</div>
 <div class="container">
   <span class="h2">Insertar un episodio</span>
   <form [formGroup]="formepisodio">
@@ -7,33 +6,37 @@
         <label>{{formepisodio.pelicula}}</label>
         <input class="form-control" formControlName="pelicula" readonly="readonly" type="hidden" />
         
-        <select class="form-control" formControlName="listaSeries">
+        <select class="form-control" formControlName="listaSeries" disabled="disabled">
           <option selected="selected" value="">Seleccione una opción</option>
-          <option *ngFor="let serie of listadoSeries" value="{{serie.clave}}">{{serie.Nombre}}</option>
-          <option>Series: {{listadoSeries}}</option>
-          <option>A</option>
-          <option>B</option>
+          <option *ngFor="let serie of listadoSerie" value="{{serie.Clave}}">{{serie.Nombre}}</option>
         </select>
-
       </label>
+
       <label class="center-block">Nombre Episodio:
         <input class="form-control" formControlName="episodio">
       </label>
+
       <label class="center-block">Temporada:
-          <input type="number" class="form-control" formControlName="temporada">
-      </label>
-      <label class="center-block">Numero Episodio:
-          <input type="number" class="form-control" formControlName="numEpisodio">
+          <input type="text" class="form-control" formControlName="temporada">
       </label>
 
-      <label class="center-block">Formato Episodio:</label>
-      <select class="form-control" formControlName="formato">
-        <option value="" selected="selected">Seleccione una opción</option>
-        <option *ngFor="let forma of listadoFormatos" value="{{forma.Clave}}">{{forma.Nombre}}</option>
-      </select>
+      <label class="center-block">Numero Episodio:
+          <input type="text" class="form-control" formControlName="numEpisodio">
+      </label>
+
+      <label class="center-block">Formato Episodio:
+        <select class="form-control" formControlName="formato">
+          <option value="">Seleccione una opción</option>
+          <option *ngFor="let forma of listadoFormatos" value="{{forma.Clave}}">{{forma.Nombre}}</option>
+        </select>
+      </label>
+      
     </div>
     <button (click)="onClick()" class="btn btn-success">Aceptar</button>
   </form>
-
-  <h2>{{mensaje}}</h2>
+  <!-- <div *ngIf="mensaje.TipoMensaje='MensajeKO'">
+      <h2>{{mensaje.TextoMensaje}}</h2>
+    <h2 class="backcolor:#FF0000;">{{mensaje.TextoMensaje}}</h2>
+  </div>
+-->
 </div>

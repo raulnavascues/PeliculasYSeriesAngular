@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { FormatosServiceService } from './formatos.service';
+import { FormatosService } from './formatos.service';
 
 describe('FormatosServiceService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [FormatosServiceService]
+      providers: [FormatosService]
     });
   });
 
-  it('should be created', inject([FormatosServiceService], (service: FormatosServiceService) => {
+  it('should be created', inject([FormatosService], (service: FormatosService) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -1,3 +1,4 @@
+import { HttpHeaders } from '@angular/common/http';
 import { Formato } from './../shared/formato';
 import { Pelicula } from './../shared/pelicula';
 import { PeliculasService } from './../peliculas-service/peliculas.service';
@@ -7,23 +8,34 @@ import { EpisodiosService } from './../episodios-service/episodios.service';
 import { Mensaje } from '../shared/Mensaje';
 import { FormatosService } from '../formatos-service/formatos.service';
 
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content': 'application/json',
+    'Content-Type':  'application/json;charset=utf-8',
+    // 'Content-Type':  'application/x-www-form-urlencoded; charset=UTF-8',
+    // 'Authorization': 'Basic ' + btoa(Username + ":" + Password),
+  }),
+};
+
 @Component({
   selector: 'app-edit-episode',
   templateUrl: './edit-episode.component.html',
   styleUrls: ['./edit-episode.component.css']
 })
 
+
+
 export class EditEpisodeComponent implements OnInit {
   private listadoSerie: Pelicula[] = [];
   private listadoFormatos: Formato[] = [];
 
   formepisodio = new FormGroup ({
-    pelicula: new FormControl('TBBT'),
-    listaSeries: new FormControl('TBBT'),
+    pelicula: new FormControl('KYLEX'),
+    listaSeries: new FormControl('KYLEX'),
     episodio: new FormControl(),
     temporada: new FormControl(),
     numEpisodio: new FormControl(),
-    formato: new FormControl()
+    formato: new FormControl('')
   });
 
   private urlEpisodios = 'http://localhost:4284/episodios/addEpisodio';
@@ -38,21 +50,18 @@ export class EditEpisodeComponent implements OnInit {
                private formatoService: FormatosService) { }
 
   ngOnInit() {
-    this.peliculaService.getPeliculas(this.urlPeliculas).subscribe(_listadoSerie => this.listadoSerie = _listadoSerie);
-    this.formatoService.getFormatos(this.urlFormatos).subscribe(_listadoFormato => this.listadoFormatos = _listadoFormato);
-
-
-    // alert('Listado de series: ' + this.listadoSerie);
-
-    console.log('Listado: ' + this.listadoSerie);
+    this.peliculaService.getPelicula(this.urlPeliculas).subscribe(_series => {
+      this.listadoSerie = _series,
+      this.formatoService.getFormatos(this.urlFormatos).subscribe(_listadoFormato => this.listadoFormatos = _listadoFormato);
+    }
+  );
   }
 
 /**
  * Llamada al web service con el boton "ENVIAR"
  */
   onClick() {
-    this.episodioService.editEpisodio(this.urlEpisodios, this.formepisodio.value ).subscribe(_mensaje => this.mensaje = _mensaje)  ;
-    // .subscribe(_mensaje => this.mensaje = _mensaje).catch();
-    console.log(this.mensaje);
+    console.log('formepisodio: ' + this.formepisodio.value);
+    this.episodioService.editEpisodio(this.urlEpisodios, this.formepisodio.value ).subscribe(_mensaje => this.mensaje = _mensaje);
   }
 }

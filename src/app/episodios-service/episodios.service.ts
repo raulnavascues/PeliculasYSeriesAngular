@@ -10,8 +10,11 @@ import 'rxjs/add/operator/map';
 
 const httpOptions = {
   headers: new HttpHeaders({
+    'method': 'RequestMethod.Post',
     'Content-Type':  'application/json',
-    'enctype': 'multipart/form-data'
+    'enctype': 'multipart/form-data',
+    'Access-Control-Allow-Origin': '*',
+    'pace-useragent': 'rest'
   })
 };
 
@@ -30,13 +33,5 @@ export class EpisodiosService {
 
   editEpisodio(url: string, json: any) {
     return this.http.post<Mensaje[]>(url, json, httpOptions);
-                                            /*.subscribe(
-                                                res => {
-                                                 return res;
-                                                },
-                                                err => {
-                                                  return err;
-                                                }
-                                            ); */// .catch(errorHandler);
   }
 }
