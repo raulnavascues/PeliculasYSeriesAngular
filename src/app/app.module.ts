@@ -14,6 +14,7 @@ import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle
 import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormatosService } from './formatos-service/formatos.service';
+import { MensajesComponent } from './mensajes/mensajes.component';
 
 const rutas: Routes = [
   // {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -38,6 +39,7 @@ const rutas: Routes = [
     PeliculasDetalleComponent,
     EditEpisodeComponent,
     MenuComponent,
+    MensajesComponent,
     /*Router,
     ActivatedRoute,*/
   ],
