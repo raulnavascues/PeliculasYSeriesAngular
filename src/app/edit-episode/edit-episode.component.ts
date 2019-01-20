@@ -28,10 +28,13 @@ const httpOptions = {
 export class EditEpisodeComponent implements OnInit {
   private listadoSerie: Pelicula[] = [];
   private listadoFormatos: Formato[] = [];
+  public nombrePelicula: String = 'KYLEX';
 
   formepisodio = new FormGroup ({
-    pelicula: new FormControl('KYLEX'),
-    listaSeries: new FormControl('KYLEX'),
+   pelicula: new FormControl(this.nombrePelicula),
+    listaSeries: new FormControl(this.nombrePelicula),
+   /*pelicula: new FormControl(''),
+    listaSeries: new FormControl(''),*/
     episodio: new FormControl(),
     temporada: new FormControl(),
     numEpisodio: new FormControl(),
@@ -60,8 +63,10 @@ export class EditEpisodeComponent implements OnInit {
 /**
  * Llamada al web service con el boton "ENVIAR"
  */
+/*
   onClick() {
     console.log('formepisodio: ' + this.formepisodio.value);
     this.episodioService.editEpisodio(this.urlEpisodios, this.formepisodio.value ).subscribe(_mensaje => this.mensaje = _mensaje);
   }
+  */
 }

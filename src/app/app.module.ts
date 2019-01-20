@@ -8,28 +8,26 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
-import { PeliculasComponent } from './peliculas/peliculas.component';
+import { PeliculasComponent } from './peliculas/peliculas';
 import { FooterComponent } from './footer/footer.component';
-import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle.component';
+import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle';
 import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
 import { MenuComponent } from './menu/menu.component';
 import { FormatosService } from './formatos-service/formatos.service';
 import { MensajesComponent } from './mensajes/mensajes.component';
 
-const rutas: Routes = [
-  // {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {
-    path: '',
-    component: PeliculasComponent,
-    children: [
-      {
-        path: 'detalle-pelicula',
-        component: PeliculasDetalleComponent,
-      },
-    ]
-  },
-  {path: 'anadir-episodio', component: EditEpisodeComponent}
+const appRoutes: Routes = [
+  { path: 'peliculas', component: PeliculasComponent}, // , canActivate: [AuthGuard] },
+  { path: 'peliculas-detalle/', component: PeliculasDetalleComponent}, // , redirectTo: './peliculas-detalle/peliculas-detalle'},
+  { path: '' , redirectTo: 'peliculas-detalle/peliculas-detalle', pathMatch: 'full'},
+  // { path: 'login', component: LoginComponent },
+  // { path: 'register', component: RegisterComponent },
+
+  // otherwise redirect to home
+  { path: '**', redirectTo: '' }
 ];
+
+
 
 @NgModule({
   declarations: [
@@ -45,20 +43,20 @@ const rutas: Routes = [
   ],
   imports: [
     BrowserModule,
+    RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
     Ng2Accordion,
-    RouterModule.forRoot (rutas, { enableTracing: false }),
   ],
   providers: [
     PeliculasService,
     EpisodiosService,
     FormatosService
   ],
-  // bootstrap: [ PeliculasComponent]
-  bootstrap: [MenuComponent, EditEpisodeComponent, FooterComponent]
+  bootstrap: [MenuComponent, FooterComponent]
+  // bootstrap: [MenuComponent,  EditEpisodeComponent, FooterComponent]
 })
 // platformBrowserDynamic().bootstrapModule(AppModule);
 

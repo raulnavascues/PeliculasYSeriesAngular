@@ -8,8 +8,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-peliculas-detalle',
-  templateUrl: './peliculas-detalle.component.html',
-  styleUrls: ['./peliculas-detalle.component.css'],
+  templateUrl: './peliculas-detalle.html',
+  styleUrls: ['./peliculas-detalle.css'],
 })
 export class PeliculasDetalleComponent implements OnInit, OnDestroy {
 
@@ -20,14 +20,21 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
   private episodios: Episodio[] = [];
   private temporadas: Temporada[] = [];
   private numTemporadas: number;
+  private peliculaID: String;
 
+  public setPeliculaID(pel: String) {
+    this.peliculaID = pel;
+  }
   constructor(private peliculasService: PeliculasService,
               private episodiosService: EpisodiosService) { }
 
+
   ngOnInit() {
     // let peliculaTemp: Pelicula[] = [];
+alert(this.peliculaID);
+    if (this.peliculaID === '') { this.peliculaID = '487'; }
 
-    this.peliculasService.getPelicula(this.urlPelicula + '487').subscribe(
+    this.peliculasService.getPelicula(this.urlPelicula + this.peliculaID).subscribe(
       _pelicula => {
         this.pelicula = _pelicula,
         this.getListaEpisodios2(_pelicula);
