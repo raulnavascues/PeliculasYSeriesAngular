@@ -31,8 +31,12 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // let peliculaTemp: Pelicula[] = [];
-alert(this.peliculaID);
-    if (this.peliculaID === '') { this.peliculaID = '487'; }
+    alert(this.peliculaID);
+    /* if (this.peliculaID === '' or this.episodios === undefined) { 
+      this.peliculaID = '487';
+    } */
+
+    this.peliculaID = '487';
 
     this.peliculasService.getPelicula(this.urlPelicula + this.peliculaID).subscribe(
       _pelicula => {

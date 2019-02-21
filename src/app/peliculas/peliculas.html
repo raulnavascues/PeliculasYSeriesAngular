@@ -1,6 +1,8 @@
 <div class="container">
   <div class="md-col-12">
-    <a download="download.xlsx" href="#" onclick="return ngTableExcelExport.excel(this, 'peliculas', 'Sheet Name Here');" class="btn btn-success">Export to Excel</a>
+    <a download="download.xlsx" href="#" onclick="return ngTableExcelExport.excel(this, 'peliculas', 'Sheet Name Here');" class="btn btn-success">
+      Export to Excel
+    </a> <!--<a download="download.xlsx" href="#" onclick="return ngTableExcelExport.excel(this, 'peliculas', 'Sheet Name Here');" class="btn btn-success">-->
     <div id="buscador">
       <form>
         <div class="form-group">
@@ -19,19 +21,21 @@
             <th>Tipo</th>
             <th>Formato</th>
             <th>Temporada</th>
+            <th>IdPelicula</th>
           </thead>
           <tbody>
             <tr *ngFor="let pelicula of peliculas">
               <td>{{pelicula.Clave}}</td>
-              <td><a routerLink="/peliculas-detalle/" href="/">{{pelicula.Nombre}}</a></td>
+              <td><a href="/peliculas-detalle">{{pelicula.Nombre}}</a></td>
               <td>{{pelicula.Productora}}</td>
               <td>{{pelicula.Tipo}}</td>
               <td>{{pelicula.Formato}}</td>
               <td *ngIf="pelicula.Temporada === 0"></td>
               <td *ngIf="pelicula.Temporada !== 0">{{pelicula.Temporada}}</td>
+              <td>{{pelicula.Id}}</td>
             </tr>
           </tbody>
       </table>
     </div>
-  </div>
-</div>
+  </div><!--<div class="md-col-12">-->
+</div> <!--<div class="container"></div>-->

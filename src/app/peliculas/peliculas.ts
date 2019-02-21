@@ -17,14 +17,13 @@ export class PeliculasComponent implements OnInit {
   returnUrl: string;
 
   private route: ActivatedRoute;
-private router: Router;
 
   public peliculas: Pelicula[] = [];
 
   private json: any;
   @ViewChild(PeliculasDetalleComponent) detallePelicula;
 
-  constructor(private peliculasService: PeliculasService, ) { }
+  constructor(private peliculasService: PeliculasService, private router: Router) { }
 
   ngOnInit() {
      this.peliculasService.getPeliculas(this.urlPeliculas).subscribe(_peliculas => this.peliculas = _peliculas);
@@ -35,8 +34,10 @@ private router: Router;
     this.peliculasService.getPeliculas(this.urlBusquedaPeliculas + event.target.value).subscribe(_peliculas => this.peliculas = _peliculas);
  }
 
-  goPlaces() {
+ /* goPlaces() {
+    alert('Hola');
     this.detallePelicula.setPeliculaID('487');
-    this.router.navigate(['./detalle-pelicula/detalle-pelicula']);
-  }
+    this.router.navigate(['./peliculas-detalle/peliculas-detalle']);
+    // this.router.navigateByUrl('/peliculas-detalle');
+  }*/
 }

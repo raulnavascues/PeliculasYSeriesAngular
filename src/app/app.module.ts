@@ -1,4 +1,5 @@
-import { Routes, RouterModule } from '@angular/router';
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
 import { Ng2Accordion } from 'ng2-native-accordion';
 import { EpisodiosService } from './episodios-service/episodios.service';
 import { HttpModule } from '@angular/http';
@@ -9,53 +10,44 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PeliculasComponent } from './peliculas/peliculas';
-import { FooterComponent } from './footer/footer.component';
+// import { FooterComponent } from './footer/footer.component';
 import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle';
 import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
-import { MenuComponent } from './menu/menu.component';
 import { FormatosService } from './formatos-service/formatos.service';
-import { MensajesComponent } from './mensajes/mensajes.component';
-
-const appRoutes: Routes = [
-  { path: 'peliculas', component: PeliculasComponent}, // , canActivate: [AuthGuard] },
-  { path: 'peliculas-detalle/', component: PeliculasDetalleComponent}, // , redirectTo: './peliculas-detalle/peliculas-detalle'},
-  { path: '' , redirectTo: 'peliculas-detalle/peliculas-detalle', pathMatch: 'full'},
-  // { path: 'login', component: LoginComponent },
-  // { path: 'register', component: RegisterComponent },
-
-  // otherwise redirect to home
-  { path: '**', redirectTo: '' }
-];
-
-
+// import { MensajesComponent } from './mensajes/mensajes.component';
+// import { NotFoundComponent } from './core/not-found/not-found.component';
+// import { MenuComponent } from './core/shell/menu/menu.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PeliculasComponent,
-    FooterComponent,
+    // FooterComponent,
     PeliculasDetalleComponent,
     EditEpisodeComponent,
-    MenuComponent,
-    MensajesComponent,
+    // MenuComponent,
+    // MensajesComponent,
+    // NotFoundComponent,
     /*Router,
     ActivatedRoute,*/
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(appRoutes),
+    // RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
     HttpClientModule,
     Ng2Accordion,
+    AppRoutingModule,
+    CoreModule
   ],
   providers: [
     PeliculasService,
     EpisodiosService,
     FormatosService
   ],
-  bootstrap: [MenuComponent, FooterComponent]
+  bootstrap: [AppComponent]
   // bootstrap: [MenuComponent,  EditEpisodeComponent, FooterComponent]
 })
 // platformBrowserDynamic().bootstrapModule(AppModule);
