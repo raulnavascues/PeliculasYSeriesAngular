@@ -27,13 +27,9 @@ import { FormatosService } from './formatos-service/formatos.service';
     EditEpisodeComponent,
     // MenuComponent,
     // MensajesComponent,
-    // NotFoundComponent,
-    /*Router,
-    ActivatedRoute,*/
   ],
   imports: [
     BrowserModule,
-    // RouterModule.forRoot(appRoutes),
     ReactiveFormsModule,
     FormsModule,
     HttpModule,
@@ -48,8 +44,6 @@ import { FormatosService } from './formatos-service/formatos.service';
     FormatosService
   ],
   bootstrap: [AppComponent]
-  // bootstrap: [MenuComponent,  EditEpisodeComponent, FooterComponent]
 })
-// platformBrowserDynamic().bootstrapModule(AppModule);
 
 export class AppModule { }
