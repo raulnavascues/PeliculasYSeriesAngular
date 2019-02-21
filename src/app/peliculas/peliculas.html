@@ -26,7 +26,7 @@
           <tbody>
             <tr *ngFor="let pelicula of peliculas">
               <td>{{pelicula.Clave}}</td>
-              <td><a href="/peliculas-detalle">{{pelicula.Nombre}}</a></td>
+              <td><a href="/peliculas-detalle?id={{pelicula.Id}}">{{pelicula.Nombre}}</a></td>
               <td>{{pelicula.Productora}}</td>
               <td>{{pelicula.Tipo}}</td>
               <td>{{pelicula.Formato}}</td>
