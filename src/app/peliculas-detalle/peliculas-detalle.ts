@@ -4,7 +4,7 @@ import { Episodio } from './../shared/episodio';
 import { EpisodiosService } from './../episodios-service/episodios.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { PeliculasService } from './../peliculas-service/peliculas.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-peliculas-detalle',
@@ -22,21 +22,20 @@ export class PeliculasDetalleComponent implements OnInit, OnDestroy {
   private numTemporadas: number;
   private peliculaID: String;
 
-  public setPeliculaID(pel: String) {
-    this.peliculaID = pel;
-  }
   constructor(private peliculasService: PeliculasService,
-              private episodiosService: EpisodiosService) { }
+              private episodiosService: EpisodiosService,
+              private route: ActivatedRoute) {
+
+    this.route.queryParamMap.subscribe(params => {
+      this.peliculaID = params.get('id');
+    });
+  }
 
 
   ngOnInit() {
-    // let peliculaTemp: Pelicula[] = [];
-    alert(this.peliculaID);
-    /* if (this.peliculaID === '' or this.episodios === undefined) {
+    if (this.peliculaID === '' || this.peliculaID === null || this.peliculaID === undefined) {
       this.peliculaID = '487';
-    } */
-
-    this.peliculaID = '487';
+    }
 
     this.peliculasService.getPelicula(this.urlPelicula + this.peliculaID).subscribe(
       _pelicula => {
