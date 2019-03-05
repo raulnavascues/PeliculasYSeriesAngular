@@ -2,24 +2,25 @@
   <span class="h2">Insertar un episodio</span>
   <form [formGroup]="formepisodio">
     <div class="form-group">
-      <label class="center-block" >Pelicula:
+      <label class="center-block" style="width: 50%">Pelicula:
         <label>{{formepisodio.pelicula}}</label>
-        <input class="form-control" formControlName="pelicula" readonly="readonly" type="hidden" />
+        <input class="form-control" formControlName="pelicula" readonly="readonly" type="text" />
         
-        <select class="form-control" formControlName="listaSeries" disabled="disabled">
+        <select class="form-control" formControlName="listaSeries">
           <option selected="selected" value="">Seleccione una opción</option>
           <option *ngFor="let serie of listadoSerie" value="{{serie.Clave}}">{{serie.Nombre}}</option>
         </select>
       </label>
-
-      <label class="center-block">Nombre Episodio:
+    </div>
+    <div id="texto">
+      <label class="center-block" style="width: 50%">Nombre Episodio:
         <input class="form-control" formControlName="episodio">
       </label>
-
+    </div>
+    <div>
       <label class="center-block">Temporada:
           <input type="text" class="form-control" formControlName="temporada">
       </label>
-
       <label class="center-block">Numero Episodio:
           <input type="text" class="form-control" formControlName="numEpisodio">
       </label>

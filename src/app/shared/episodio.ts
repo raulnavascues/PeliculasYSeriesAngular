@@ -1,9 +1,9 @@
 export class Episodio {
     private Id: number;
-    private Pelicula: string;
+    public Pelicula: string;
     private Episodio: string;
-    private Temporada: number;
-    private NumEpisodio: number;
+    public Temporada: number;
+    public NumEpisodio: number;
     private RutaFichero: string;
 
     constructor( private _id: number, private _pelicula: string, private _episodio: string,

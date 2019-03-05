@@ -10,23 +10,20 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { PeliculasComponent } from './peliculas/peliculas';
-// import { FooterComponent } from './footer/footer.component';
 import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle';
 import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
 import { FormatosService } from './formatos-service/formatos.service';
+import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.component';
 // import { MensajesComponent } from './mensajes/mensajes.component';
-// import { NotFoundComponent } from './core/not-found/not-found.component';
-// import { MenuComponent } from './core/shell/menu/menu.component';
+// import { MenuComponent } from './core/shell/menu/menu.component'; import {MatTableModule} from '@angular/material/table';
 
 @NgModule({
   declarations: [
     AppComponent,
     PeliculasComponent,
-    // FooterComponent,
     PeliculasDetalleComponent,
     EditEpisodeComponent,
-    // MenuComponent,
-    // MensajesComponent,
+    EditarPeliculaComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,13 +33,9 @@ import { FormatosService } from './formatos-service/formatos.service';
     HttpClientModule,
     Ng2Accordion,
     AppRoutingModule,
-    CoreModule
+    CoreModule,
   ],
-  providers: [
-    PeliculasService,
-    EpisodiosService,
-    FormatosService
-  ],
+  providers: [PeliculasService, EpisodiosService, FormatosService],
   bootstrap: [AppComponent]
 })
 

@@ -33,11 +33,4 @@ export class PeliculasComponent implements OnInit {
   buscar(event) {
     this.peliculasService.getPeliculas(this.urlBusquedaPeliculas + event.target.value).subscribe(_peliculas => this.peliculas = _peliculas);
  }
-
- /* goPlaces() {
-    alert('Hola');
-    this.detallePelicula.setPeliculaID('487');
-    this.router.navigate(['./peliculas-detalle/peliculas-detalle']);
-    // this.router.navigateByUrl('/peliculas-detalle');
-  }*/
 }
