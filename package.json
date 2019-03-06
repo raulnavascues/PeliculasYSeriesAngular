@@ -26,6 +26,7 @@
     "@ngui/collapsable": "^0.5.1",
     "angular-2-data-table": "^0.1.2",
     "angular-2-data-table-bootstrap4": "^0.1.6",
+    "angular-6-datatable": "^0.8.0",
     "angular-resource": "^1.6.9",
     "angular-ui-bootstrap": "^2.5.6",
     "angular2-data-table": "^3.0.0",
@@ -35,6 +36,7 @@
     "angular4-notifications": "0.0.2",
     "bootstrap": "^4.1.1",
     "core-js": "^2.4.1",
+    "file-saver": "^2.0.1",
     "jquery": "^3.3.1",
     "materialize-css": "^1.0.0-rc.2",
     "ng-table-excel-export": "^1.0.0",
@@ -45,6 +47,7 @@
     "ngx-pagination": "^3.2.1",
     "popper.js": "^1.12.9",
     "rxjs": "^5.5.6",
+    "xlsx": "^0.14.1",
     "zone.js": "^0.8.19"
   },
   "devDependencies": {

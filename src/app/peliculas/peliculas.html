@@ -1,25 +1,27 @@
-<div class="container">
+<div class="container float-left pt-3">
   <div class="md-col-12">
         <div>
       <div>
         <div id="buscador" class="float-left w-100 border-bottom">
-          <form style="width:71%" class="float-left">
+          <form style="width:70%" class="float-left">
             <div class="form-group">
               <input type="text" (keypress)="buscar($event)" id="search" class="form-control" />
             </div>
           </form>
           <div class="float-left ml-2">
-            <a href="/editar-pelicula" class="btn btn-primary">Añadir Pelicula/Serie</a>
+            <a href="/editar-pelicula" class="btn btn-primary">Añadir Pelicula / Serie</a>
           </div>
-          <div class="float-right ml-2">
+          <div class="float-right ml-1">
             <a download="download.xlsx" href="#" onclick="return ngTableExcelExport.excel(this, 'peliculas', 'Sheet Name Here');" class="btn btn-success">
               Export to Excel
             </a>
           </div>
         </div>
-        <table id="peliculas" class="table table-bordered table-hover">
+        <table id="peliculas" class="table table-striped" [mfData]="peliculas" #mf="mfDataTable" [mfRowsOnPage]="10">
           <thead>
-            <th>Clave</th>
+            <th>
+              <mfDefaultSorter by="name">Clave</mfDefaultSorter>
+            </th>
             <th>Titulo</th>
             <th>Productora</th>
             <th>Tipo</th>
@@ -27,7 +29,7 @@
             <th>Temporada</th>
           </thead>
           <tbody>
-            <tr *ngFor="let pelicula of peliculas">
+            <tr *ngFor="let pelicula of mf.data">
               <td>{{pelicula.Clave}}</td>
               <td><a href="/peliculas-detalle?id={{pelicula.Id}}">{{pelicula.Nombre}}</a></td>
               <td>{{pelicula.Productora}}</td>
@@ -37,6 +39,13 @@
               <td *ngIf="pelicula.Temporada !== 0">{{pelicula.Temporada}}</td>
             </tr>
           </tbody>
+          <tfoot>
+              <tr>
+                  <td colspan="6">
+                      <mfBootstrapPaginator [rowsOnPageSet]="[5,10,25,50,100]"></mfBootstrapPaginator>
+                  </td>
+              </tr>
+          </tfoot>
       </table>
     </div>
   </div><!--<div class="md-col-12">-->

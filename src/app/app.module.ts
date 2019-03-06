@@ -16,6 +16,8 @@ import { FormatosService } from './formatos-service/formatos.service';
 import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.component';
 // import { MensajesComponent } from './mensajes/mensajes.component';
 // import { MenuComponent } from './core/shell/menu/menu.component'; import {MatTableModule} from '@angular/material/table';
+import {DataTableModule} from 'angular-6-datatable';
+import { PruebasComponent } from './pruebas/pruebas.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.compo
     PeliculasDetalleComponent,
     EditEpisodeComponent,
     EditarPeliculaComponent,
+    PruebasComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,6 +37,7 @@ import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.compo
     Ng2Accordion,
     AppRoutingModule,
     CoreModule,
+    DataTableModule,
   ],
   providers: [PeliculasService, EpisodiosService, FormatosService],
   bootstrap: [AppComponent]

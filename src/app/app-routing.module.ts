@@ -1,3 +1,4 @@
+import { PruebasComponent } from './pruebas/pruebas.component';
 import { EditEpisodeComponent } from './edit-episode/edit-episode.component';
 import { PeliculasDetalleComponent } from './peliculas-detalle/peliculas-detalle';
 import { PeliculasComponent } from './peliculas/peliculas';
