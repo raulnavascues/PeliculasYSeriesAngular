@@ -4,12 +4,12 @@ import { ActivatedRoute } from '@angular/router';
 import { HttpHeaders } from '@angular/common/http';
 import { Formato } from './../shared/formato';
 import { Pelicula } from './../shared/pelicula';
-import { PeliculasService } from './../peliculas-service/peliculas.service';
+import { PeliculasService } from './../services/peliculas-service/peliculas.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
-import { EpisodiosService } from './../episodios-service/episodios.service';
+import { EpisodiosService } from './../services/episodios-service/episodios.service';
 import { Mensaje } from '../shared/Mensaje';
-import { FormatosService } from '../formatos-service/formatos.service';
+import { FormatosService } from '../services/formatos-service/formatos.service';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -60,7 +60,7 @@ export class EditEpisodeComponent implements OnInit {
   private mensaje: Mensaje[];
 
   constructor(private peliculaService: PeliculasService, private episodioService: EpisodiosService,
-              private formatoService: FormatosService, private route: ActivatedRoute, private fb: FormBuilder) {
+              private formatoService: FormatosService, private route: ActivatedRoute) {
 
     let anad: String;
 
@@ -80,9 +80,8 @@ export class EditEpisodeComponent implements OnInit {
       this.formatoService.getFormatos(this.urlFormatos).subscribe(_listadoFormato => {
         this.listadoFormatos = _listadoFormato,
         this.cargarDatosEpisodio();
-      } );
-    }
-    );
+      });
+    });
 /*
     this.formEpisodio = this.fb.group({
     pelicula: new FormControl(this.nombrePelicula),

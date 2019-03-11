@@ -1,9 +1,9 @@
 import { Pelicula } from './../shared/pelicula';
 import { Temporada } from './../shared/temporada';
 import { Episodio } from './../shared/episodio';
-import { EpisodiosService } from './../episodios-service/episodios.service';
+import { EpisodiosService } from './../services/episodios-service/episodios.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PeliculasService } from './../peliculas-service/peliculas.service';
+import { PeliculasService } from './../services/peliculas-service/peliculas.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

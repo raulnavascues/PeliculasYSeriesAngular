@@ -1,7 +1,7 @@
-import { Mensaje } from './../shared/Mensaje';
-import { Pelicula } from './../shared/pelicula';
-import { Temporada } from './../shared/temporada';
-import { Episodio } from './../shared/episodio';
+import { Mensaje } from './../../shared/Mensaje';
+import { Pelicula } from './../../shared/pelicula';
+import { Temporada } from './../../shared/temporada';
+import { Episodio } from './../../shared/episodio';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/catch';

@@ -1,6 +1,6 @@
 import { PeliculasDetalleComponent } from './../peliculas-detalle/peliculas-detalle';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PeliculasService } from './../peliculas-service/peliculas.service';
+import { PeliculasService } from './../services/peliculas-service/peliculas.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Pelicula } from '../shared/pelicula';
 

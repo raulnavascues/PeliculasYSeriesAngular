@@ -1,12 +1,69 @@
-<div class="container">
-    <div class="md-col-12">
-      <div class="">
-        <form>
-          <label>
-          <span>Clave</span>
-          <input />
-          </label>
-        </form>
-      </div>
-  </div>
+<div class="container float-left">
+      <h2>Añadir pelicula o serie</h2>
+      <form class="" [formGroup]="anadirSerPel">
+        <div class="form-group float-left" style="width: 20%">
+          <label>Clave</label>
+            <input class="form-control" formControlName="Clave" />
+        </div>
+
+        <div class="form-group ml-2 float-left" style="width:79%">
+          <label>Nombre</label>
+          <input class="form-control input-normal" formControlName="Nombre" />
+        </div>
+
+        <div class="form-group float-left" style="width: 38%">
+          <label>Productora</label>
+          <select class="form-control" formControlName="Productoras">
+            <option selected="selected" value="">Seleccione una opción</option>
+            <option *ngFor="let produc of listadoProductoras" value="{{produc.Clave}}">{{produc.Nombre}}</option>
+          </select>
+        </div>
+
+        <div class="form-group ml-2 float-left" style="width:20%">
+          <label>Tipo</label>
+          <select class="form-control" formControlName="Tipo">
+            <option selected="selected" value="">Seleccione una opción</option>
+            <option *ngFor="let tipo of listadoTipos" value="{{tipo.Clave}}">{{tipo.Nombre}}</option>
+          </select>
+        </div>
+
+        <div class="form-group ml-2 float-left">
+          <label>Estado</label>
+          <select class="form-control" formControlName="Estados">
+            <option selected="selected" value="">Seleccione una opción</option>
+            <option *ngFor="let estado of listadoEstados" value="{{estado.Clave}}">{{estado.Nombre}}</option>
+          </select>
+        </div>
+
+        <div class="float-left form-group ml-2" style="width:20%">
+          <label>Formato</label>
+          <select class="form-control" formControlName="Formato">
+            <option selected="selected" value="">Seleccione una opción</option>
+            <option *ngFor="let formato of listadoFormatos" value="{{formato.Clave}}">{{formato.Nombre}}</option>
+          </select>
+        </div>
+
+        <div class="form-group float-left">
+          <label>Generos</label>
+          <select class="form-control" formControlName="Generos">
+            <option selected="selected" value="">Seleccione una opción</option>
+            <option *ngFor="let genero of listadoGeneros" value="{{genero.Clave}}">{{genero.Nombre}}</option>
+          </select>
+        </div>
+
+        <div class="form-group ml-2 float-left">
+          <label>Temporada</label>
+          <input class="form-control" formControlName="Temporada" />
+        </div>
+
+        <div class="form-group float-left w-100">
+          <label>Sipnosis</label>
+          <textarea class="form-control" rows="10" formControlName="Sipnosis"></textarea>
+        </div>
+
+        <div class="float-right">
+          <button type="button" class="float-left btn btn-secondary" (click)="onClick()">Guardar</button>
+          <button type="button" class="float-right btn btn-danger ml-2">Cancelar</button>
+        </div>
+      </form>
 </div>
