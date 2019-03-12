@@ -70,6 +70,16 @@ export class EditarPeliculaComponent implements OnInit {
 
   onClick() {
     console.log('formepisodio: ' + this.anadirSerPel.value);
-    this.peliculaService.addPeliculas(this.urlEpisodios, this.anadirSerPel.value ).subscribe(); // _mensaje => this.mensaje = _mensaje);
+    this.peliculaService.addPeliculas(this.urlEpisodios, this.anadirSerPel.value ).subscribe({
+      Clave: new FormControl(''),
+      Nombre: new FormControl(''),
+      Productoras: new FormControl(''),
+      Generos: new FormControl(''),
+      Tipo: new FormControl(''),
+      Formato: new FormControl(''),
+      Estados: new FormControl(''),
+      Temporada: new FormControl('0'),
+      Sipnosis: new FormControl('');
+    }); // _mensaje => this.mensaje = _mensaje);
   }
 }
