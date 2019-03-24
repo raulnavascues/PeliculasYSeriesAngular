@@ -9,7 +9,7 @@
             </div>
           </form>
           <div class="float-left ml-2">
-            <a href="/editar-pelicula" class="btn btn-primary">Añadir Pelicula / Serie</a>
+            <a href="/anadir-pelicula.html" class="btn btn-primary">Añadir Pelicula / Serie</a>
           </div>
           <div class="float-right ml-1">
             <a download="download.xlsx" href="#" onclick="return ngTableExcelExport.excel(this, 'peliculas', 'Sheet Name Here');" class="btn btn-success">
@@ -26,15 +26,17 @@
             <th>Productora</th>
             <th>Tipo</th>
             <th>Formato</th>
+            <th>Genero</th>
             <th>Temporada</th>
           </thead>
           <tbody>
             <tr *ngFor="let pelicula of mf.data">
               <td>{{pelicula.Clave}}</td>
-              <td><a href="/peliculas-detalle?id={{pelicula.Id}}">{{pelicula.Nombre}}</a></td>
+              <td><a href="/peliculas-detalle.html?id={{pelicula.Id}}">{{pelicula.Nombre}}</a></td>
               <td>{{pelicula.Productora}}</td>
               <td>{{pelicula.Tipo}}</td>
               <td>{{pelicula.Formato}}</td>
+              <td>{{pelicula.Genero}}</td>
               <td *ngIf="pelicula.Temporada === 0"></td>
               <td *ngIf="pelicula.Temporada !== 0" class="text-right">{{pelicula.Temporada}}</td>
             </tr>

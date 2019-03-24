@@ -13,19 +13,23 @@ const routes: Routes = [
     component: PeliculasComponent
   },
   {
-    path: 'peliculas-detalle',
+    path: 'peliculas-detalle.html',
     component: PeliculasDetalleComponent
   },
   {
-    path: 'edit-episode',
+    path: 'edit-episode.html',
     component: EditEpisodeComponent
   },
   {
-    path: 'editar-pelicula',
+    path: 'editar-pelicula.html',
+    component: PruebasComponent
+  },
+  {
+    path: 'anadir-pelicula.html',
     component: EditarPeliculaComponent
   },
   {
-    path: 'not-found',
+    path: 'not-found.html',
     component: NotFoundComponent
   },
   {
