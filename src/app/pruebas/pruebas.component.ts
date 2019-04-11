@@ -26,7 +26,7 @@ export class PruebasComponent implements OnInit {
   /**
   *Formulario para añadir o editar una pelicula o serie
   */
-  public anadirSerPel: FormGroup;
+  private anadirSerPel: FormGroup;
 
   /** URL de carga de los formatos*/
   private urlFormatos = 'http://localhost:4284/Formatos';

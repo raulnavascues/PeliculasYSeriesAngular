@@ -36,18 +36,7 @@ export class EditEpisodeComponent implements OnInit {
   private detalleEpisodios: Episodio[] = [];
   private numEpisodio: Number;
   private numTemporada: Number;
-  private formEpisodio: FormGroup;
-
-  public formepisodio = new FormGroup ({
-   pelicula: new FormControl(this.nombrePelicula),
-    listaSeries: new FormControl(this.nombrePelicula),
-    // pelicula: new FormControl(''),
-    // listaSeries: new FormControl(''),
-    episodio: new FormControl(this.numEpisodio),
-    temporada: new FormControl(this.numTemporada),
-    numEpisodio: new FormControl(),
-    formato: new FormControl('')
-  });
+  private formepisodio: FormGroup;
 
   private urlEpisodios = 'http://localhost:4284/episodios/addEpisodio';
   private urlDetalleEpisodio = 'http://localhost:4284/episodios/ObtenerEpisodio?clave=';
@@ -71,10 +60,23 @@ export class EditEpisodeComponent implements OnInit {
     });
 
     this.anadir = (anad === 'true');
-    console.log ('nombrePelicula: ' + this.nombrePelicula);
   } //  constructor
 
+  inicializarFormulario(nom: string, claPel: String, numEpi: Number, tempo: Number, forma: string) {
+    this.formepisodio = new FormGroup({
+    pelicula: new FormControl(claPel),
+    listaSeries: new FormControl(claPel),
+    episodio: new FormControl(nom),
+    temporada: new FormControl(tempo),
+    numEpisodio: new FormControl(numEpi),
+    formato: new FormControl(forma),
+    sipnosis: new FormControl('')
+    });
+  }
+
   ngOnInit() {
+    this.inicializarFormulario('', this.nombrePelicula, 0, 0, '') ;
+
     this.peliculaService.getPelicula(this.urlPeliculas).subscribe(_series => {
       this.listadoSerie = _series,
       this.formatoService.getFormatos(this.urlFormatos).subscribe(_listadoFormato => {
@@ -82,30 +84,17 @@ export class EditEpisodeComponent implements OnInit {
         this.cargarDatosEpisodio();
       });
     });
-/*
-    this.formEpisodio = this.fb.group({
-    pelicula: new FormControl(this.nombrePelicula),
-    listaSeries: new FormControl(this.nombrePelicula),
-    episodio: new FormControl(this.numEpisodio),
-    temporada: new FormControl(this.numTemporada),
-    numEpisodio: new FormControl(),
-    formato: new FormControl('')
-    });
-    console.log('nombre serie: ' + this.nombrePelicula);
-    console.log('numero episodio: ' + this.numEpisodio);
-    console.log('numero temporada: ' + this.numTemporada);
-    */
+
   }
 
   cargarDatosEpisodio() {
-    console.log ('Anadir: ' + this.anadir);
-    if (this.anadir === true) {
+    if (this.anadir === false) {
       this.episodioService.getEpisodios(this.urlDetalleEpisodio + this.idEpisode).subscribe(_detalleCapitulo => {
-        console.log(_detalleCapitulo[0]);
-        this.nombrePelicula = _detalleCapitulo[0].Pelicula,
-        this.numEpisodio = _detalleCapitulo[0].NumEpisodio,
-        this.numTemporada = _detalleCapitulo[0].Temporada;
+        this.inicializarFormulario(_detalleCapitulo[0].Episodio, _detalleCapitulo[0].Pelicula, _detalleCapitulo[0].NumEpisodio,
+          _detalleCapitulo[0].Temporada, _detalleCapitulo[0].Formato);
       });
+    } else {
+      this.inicializarFormulario('', this.nombrePelicula, 0, 0, ''); // , _detalleCapitulo[0].Formato)
     }
   }
 
