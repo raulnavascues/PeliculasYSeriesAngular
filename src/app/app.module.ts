@@ -22,6 +22,7 @@ import { EditarPeliculaComponent } from './editar-pelicula/editar-pelicula.compo
 import {DataTableModule} from 'angular-6-datatable';
 import { PruebasComponent } from './pruebas/pruebas.component';
 import { ProductorasService } from './services/productoras-service/productoras.service';
+import { EditorModule } from '@tinymce/tinymce-angular';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ProductorasService } from './services/productoras-service/productoras.s
     AppRoutingModule,
     CoreModule,
     DataTableModule,
+    EditorModule,
   ],
   providers: [
     PeliculasService,

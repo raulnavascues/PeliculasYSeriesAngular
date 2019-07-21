@@ -1,4 +1,4 @@
-<div *ngFor="let pel of pelicula" class="container float-left">
+<div *ngFor="let pel of pelicula">
 
   <div class="pb-3 mb-2">
     <span class="h1">Detalle {{pel.Tipo}}: {{pel.Nombre}}</span>
@@ -11,6 +11,16 @@
   <div class="pb-2 mb-2">
     <span class="h5" >Nombre: </span> 
     <span>{{pel.Nombre}}</span>
+  </div>
+
+  <div class="pb-2 mb-2 pr-3 mr-2 float-left">
+    <span class="h5">Tipo: </span>
+    <span>{{pel.Tipo}}</span>
+  </div>
+
+  <div class="pb-2 mb-2 pr-3 mr-2 float-left">
+    <span class="h5">Formato: </span>
+    <span>{{pel.Formato}}</span>
   </div>
 
   <div class="pb-2 mb-2 pr-3 mr-2 float-left">
@@ -40,7 +50,7 @@
       
       
       
-    
+    <!-- En caso de ser una serie, carga el listado de episodios por temporada-->
     <div *ngIf="pel.claveTipo!='PEL' && pel.claveTipo!='DIB' && pel.claveTipo!='PMA' ">
       <div id="accordion">
         <div class="card">
@@ -48,7 +58,7 @@
             
             <div class="card-header">
               <button class="btn btn-link" data-toggle="collapse" attr.data-target="#{{tempo.CodTemporada}}">{{tempo.NomTemporada}}</button>
-              <a href="/edit-episode.html?serie={{pel.Clave}}&anadir=true" class="btn btn-success btn-sm">Añadir Capitulo</a>
+              <a href="/edit-episode.html?serie={{pel.Clave}}&anadir=true&temporada={{tempo.NumTemporada}}" class="btn btn-success btn-sm">Añadir Capitulo</a>
             </div><!-- <div class="card-header"> -->
             
             <div id="{{tempo.CodTemporada}}" class="collapse" data-parent="#accordion">

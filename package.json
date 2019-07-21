@@ -24,6 +24,7 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@ngui/collapsable": "^0.5.1",
+    "@tinymce/tinymce-angular": "^3.0.0",
     "angular-2-data-table": "^0.1.2",
     "angular-2-data-table-bootstrap4": "^0.1.6",
     "angular-6-datatable": "^0.8.0",

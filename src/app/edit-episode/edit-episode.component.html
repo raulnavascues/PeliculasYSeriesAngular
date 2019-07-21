@@ -1,16 +1,20 @@
 <div class="container">
-  <span class="h2">Insertar un episodio</span>
+  <span class="h2">{{TituloPagina}}</span>
   <form [formGroup]="formepisodio">
-    <div class="form-group float-left" style="width: 20%">
+    <div class="form-group float-left mr-2" style="width:9%;">
+      <label>Id:</label>
+      <input class="form-control" formControlName="Id" readonly="readonly" type="text" />
+    </div>
+    <div class="form-group float-left" style="width: 19%;">
       <label>Pelicula: </label>
       <input class="form-control" formControlName="pelicula" readonly="readonly" type="hidden" />
       <select class="form-control readonly" formControlName="listaSeries" >
-          <option selected="selected"  formControlName="pelicula" value="" >Seleccione una opción</option>
+          <option selected="selected"  value="" >Seleccione una opción</option>
           <option *ngFor="let serie of listadoSerie" value="{{serie.Clave}}">{{serie.Nombre}}</option>
         </select>
     </div>
 
-    <div class="form-group ml-2 float-left" style="width:79%">
+    <div class="form-group ml-2 float-left" style="width:69%">
       <label>Nombre episodio:</label>
       <input class="form-control input-normal" formControlName="episodio" />
     </div>
@@ -42,41 +46,4 @@
       <button (click)="onClick()" class="btn btn-success">Guardar</button>
     </div>
   </form>
-  <!--<form [formGroup]="formepisodio">
-    <div class="form-group">
-      <label class="center-block" style="width: 50%">Pelicula:
-        <label>{{formepisodio.pelicula}}</label>
-        <input class="form-control" formControlName="pelicula" readonly="readonly" type="text" />
-        
-        <select class="form-control" formControlName="listaSeries" >
-          <option selected="selected" value="">Seleccione una opción</option>
-          <option *ngFor="let serie of listadoSerie" value="{{serie.Clave}}">{{serie.Nombre}}</option>
-        </select>
-      </label>
-    </div>
-
-
-    <div id="texto">
-      <label class="center-block" style="width: 50%">Nombre Episodio:
-        <input class="form-control" formControlName="episodio">
-      </label>
-    </div>
-    <div>
-      <label class="center-block">Temporada:
-          <input type="text" class="form-control" formControlName="temporada">
-      </label>
-      <label class="center-block">Numero Episodio:
-          <input type="text" class="form-control" formControlName="numEpisodio">
-      </label>
-
-      <label class="center-block">Formato Episodio:
-        <select class="form-control" formControlName="formato">
-          <option value="">Seleccione una opción</option>
-          <option *ngFor="let forma of listadoFormatos" value="{{forma.Clave}}">{{forma.Nombre}}</option>
-        </select>
-      </label>
-      
-    </div>
-    <button (click)="onClick()" class="btn btn-success">Aceptar</button>
-  </form>-->
 </div>

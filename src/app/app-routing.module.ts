@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'editar-pelicula.html',
-    component: PruebasComponent
+    component: EditarPeliculaComponent
   },
   {
     path: 'anadir-pelicula.html',

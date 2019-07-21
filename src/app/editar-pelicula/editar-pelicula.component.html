@@ -1,4 +1,4 @@
-<div class="container float-left">
+<!--<div class="container float-left pt-3 pb-3 pl-3 pr-3">-->
       <h2>Añadir pelicula o serie</h2>
       <form class="" [formGroup]="anadirSerPel">
         <div class="form-group float-left" style="width: 20%">
@@ -13,7 +13,7 @@
 
         <div class="form-group float-left" style="width: 38%">
           <label>Productora</label>
-          <select class="form-control" formControlName="Productoras">
+          <select class="form-control" formControlName="Productora">
             <option selected="selected" value="">Seleccione una opción</option>
             <option *ngFor="let produc of listadoProductoras" value="{{produc.Clave}}">{{produc.Nombre}}</option>
           </select>
@@ -29,7 +29,7 @@
 
         <div class="form-group ml-2 float-left">
           <label>Estado</label>
-          <select class="form-control" formControlName="Estados">
+          <select class="form-control" formControlName="Estado">
             <option selected="selected" value="">Seleccione una opción</option>
             <option *ngFor="let estado of listadoEstados" value="{{estado.Clave}}">{{estado.Nombre}}</option>
           </select>
@@ -45,7 +45,7 @@
 
         <div class="form-group float-left">
           <label>Generos</label>
-          <select class="form-control" formControlName="Generos">
+          <select class="form-control" formControlName="Genero">
             <option selected="selected" value="">Seleccione una opción</option>
             <option *ngFor="let genero of listadoGeneros" value="{{genero.Clave}}">{{genero.Nombre}}</option>
           </select>
@@ -60,10 +60,15 @@
           <label>Sipnosis</label>
           <textarea class="form-control" rows="10" formControlName="Sipnosis"></textarea>
         </div>
-
+<!--
+        <div class="form-group float-left w-100">
+          <label>Sipnosis</label>
+          <editor formControlName="Sipnosis"  [(ngModel)]="Sipnosis"></editor>
+        </div>
+      -->
         <div class="float-right">
           <button type="button" class="float-left btn btn-secondary" (click)="onClick()">Guardar</button>
           <button type="button" class="float-right btn btn-danger ml-2">Cancelar</button>
         </div>
       </form>
-</div>
+<!--</div>-->

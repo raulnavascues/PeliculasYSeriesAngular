@@ -1,3 +1,4 @@
+import { Mensaje } from './../shared/Mensaje';
 import { ActivatedRoute } from '@angular/router';
 import { PeliculasService } from './../services/peliculas-service/peliculas.service';
 import { Temporada } from './../shared/temporada';
@@ -13,6 +14,7 @@ import { FormatosService } from './../services/formatos-service/formatos.service
 import { Formato } from './../shared/formato';
 import { Component, OnInit } from '@angular/core';
 import { GenerosService } from '../services/generos-service/generos.service';
+import { environment } from '../../environments/environment.prod';
 
 @Component({
   selector: 'app-editar-pelicula',
@@ -21,17 +23,7 @@ import { GenerosService } from '../services/generos-service/generos.service';
 })
 export class EditarPeliculaComponent implements OnInit {
 
-  public anadirSerPel: FormGroup; /* = new FormGroup({
-    Clave: new FormControl(''),
-    Nombre: new FormControl(''),
-    Productoras: new FormControl(''),
-    Generos: new FormControl(''),
-    Tipo: new FormControl(''),
-    Formato: new FormControl(''),
-    Estados: new FormControl(''),
-    Temporada: new FormControl('0'),
-    Sipnosis: new FormControl('')
-  });*/
+  public anadirSerPel: FormGroup;
 
   private urlFormatos = 'http://localhost:4284/Formatos';
   private urlTipos = 'http://localhost:4284/Tipos';
@@ -40,7 +32,7 @@ export class EditarPeliculaComponent implements OnInit {
   private urlEstados = 'http://localhost:4284/Estados';
   private urlPelicula = 'http://localhost:4284/Peliculas/ConseguirDatosPelicula?id=';
 
-  private urlEpisodios = 'http://localhost:4284/Peliculas/AddPeliSerie';
+  private urlEpisodios = 'http://localhost:4284/Peliculas/AddUpdatePeliSerie';
 
   private listadoFormatos: Formato[] = [];
   private listadoTipos: Tipo[] = [];
@@ -49,6 +41,10 @@ export class EditarPeliculaComponent implements OnInit {
   private listadoEstados: Estado[] = [];
 
   private idPelicula: String;
+
+  private titulo: String = '';
+
+  private mensaje: Mensaje;
 
   constructor(private formatoService: FormatosService, private tiposService: TiposPeliculasService,
     private productorasService: ProductorasService, private generosService: GenerosService, private estadoService: EstadosService,
@@ -71,16 +67,17 @@ export class EditarPeliculaComponent implements OnInit {
      * @param temp parametro para la temporada
      * @param sipn parametro para la sipnosis
      */
-   private inicializarFormulario(clav: String, nom: String, prod: String, gen: String, tip: String, form: String,
-      est: String, temp: String, sipn: String) {
+    private inicializarFormulario(id: Number, clav: String, nom: String, prod: String, gen: String, tip: String, form: String,
+      est: String, temp: Number, sipn: String) {
         this.anadirSerPel = new FormGroup({
+          Id: new FormControl(id),
           Clave: new FormControl(clav),
           Nombre: new FormControl(nom),
-          Productoras: new FormControl(prod),
-          Generos: new FormControl(gen),
+          Productora: new FormControl(prod),
+          Genero: new FormControl(gen),
           Tipo: new FormControl(tip),
           Formato: new FormControl(form),
-          Estados: new FormControl(est),
+          Estado: new FormControl(est),
           Temporada: new FormControl(temp),
           Sipnosis: new FormControl(sipn)
         });
@@ -88,7 +85,7 @@ export class EditarPeliculaComponent implements OnInit {
 
   ngOnInit() {
 
-    this.inicializarFormulario('', '', '', '', '', '', '', '0', '');
+    this.inicializarFormulario(0, '', '', '', 'INDET', '', '', '', 0, '');
 
     this.formatoService.getFormatos(this.urlFormatos).subscribe(_listadoFormato => {
       this.listadoFormatos = _listadoFormato,
@@ -109,31 +106,46 @@ export class EditarPeliculaComponent implements OnInit {
   }
 
   public CargarPeliculaSerie() {
-    let produc: String = '';
     // Comprobar si el Id viene lleno
     if (this.idPelicula !== null) {
+      this.titulo = 'Editar pelicula o serie';
       this.peliculaService.getPelicula(this.urlPelicula + this.idPelicula).subscribe(_pelicula => {
-
-        produc = _pelicula[0].getProductora,
-        console.log('Productora: ' + produc);
-
-        /*this.anadirSerPel = new FormGroup({
-          Clave: new FormControl(_pelicula[0].Clave),
-          Nombre: new FormControl(_pelicula[0].Nombre),
-          Productoras: new FormControl(produc),
-          Generos: new FormControl(''),
-          Tipo: new FormControl(''),
-          Formato: new FormControl(''),
-          Estados: new FormControl(''),
-          Temporada: new FormControl('0'),
-          Sipnosis: new FormControl(_pelicula[0].getSipnosis)
-        });*/
+        console.log('Id: ' + _pelicula[0].Id),
+        this.inicializarFormulario(
+          _pelicula[0].Id,
+          _pelicula[0].Clave,
+          _pelicula[0].Nombre,
+          _pelicula[0].Productora,
+          _pelicula[0].Genero,
+          _pelicula[0].Tipo,
+          _pelicula[0].Formato,
+          _pelicula[0].Estado,
+          _pelicula[0].Temporada,
+          _pelicula[0].Sipnosis);
       });
+    } else {
+      this.titulo = 'Añadir pelicula o serie';
     }
   }
 
   onClick() {
     console.log('formepisodio: ' + this.anadirSerPel.value);
-    this.peliculaService.addPeliculas(this.urlEpisodios, this.anadirSerPel.value ).subscribe(); // _mensaje => this.mensaje = _mensaje);
+    this.peliculaService.addPeliculas(this.urlEpisodios, this.anadirSerPel.value ).subscribe(
+      (data) => this.onSuccess(data),
+      (error) => this.handleError(error)
+    );
+  }
+
+public getMensajes(): Mensaje {
+  return this.mensaje;
+}
+
+  onSuccess(msg) {
+    this.mensaje = msg;
+    console.log(msg);
+  }
+
+  handleError(error) {
+console.error(error);
   }
 }
