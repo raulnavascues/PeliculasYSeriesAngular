@@ -39,7 +39,7 @@
     "bootstrap": "^4.1.1",
     "core-js": "^2.4.1",
     "file-saver": "^2.0.1",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "materialize-css": "^1.0.0-rc.2",
     "ng-auto-complete": "^4.1.4",
     "ng-table-excel-export": "^1.0.0",
